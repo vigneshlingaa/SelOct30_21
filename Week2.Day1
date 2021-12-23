@@ -1,0 +1,68 @@
+package Week2.day1;
+
+import org.apache.commons.compress.harmony.pack200.NewAttribute;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.github.dockerjava.api.model.Driver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class CreatLead {
+
+	public static void main(String[] args) {
+		
+		// Step 1: Download the chrome driver
+		WebDriverManager.chromedriver().setup();
+		
+		// Step 2: Launch the chrome browser
+		ChromeDriver driver = new ChromeDriver();
+		
+		// Step 3: Load the URL
+		driver.get(" http://leaftaps.com/opentaps/");
+		
+		// Step 4: Maximize the browser
+		driver.manage().window().maximize();
+		
+		// step 5: Find the user name and enter the data
+		driver.findElement(By.id("username")).sendKeys("DemosalesManager");;
+		
+		// Step 6: find the password and enter the data
+		driver.findElement(By.id("password")).sendKeys("crmsfa");;
+		
+		// step 7: find the Login button and click
+		driver.findElement(By.className("decorativeSubmit")).click();
+		
+		// step 8: click CRM/SFA
+		driver.findElement(By.linkText("CRM/SFA")).click();
+		
+		// step 9: Click Contacts Tab
+		driver.findElement(By.linkText("Contacts")).click();
+		
+		// step 10: Click Create Contact
+		driver.findElement(By.linkText("Create Contact")).click();
+		
+		// step 11: Type First Name
+		driver.findElement(By.id("firstNameField")).sendKeys("vignesh");
+		
+		// step 12: Type Last Name
+		driver.findElement(By.id("lastNameField")).sendKeys("lingaa");
+		
+		// step 13: Click Create Contact Button
+		driver.findElement(By.name("submitButton")).click();
+		
+		// step 14: Print the first name and browser title
+		String title = driver.getTitle();
+		System.out.println(title);
+		
+		String text = driver.findElement(By.id("viewContact_fullName_sp")).getText();
+		System.out.println(text);
+		
+		// step 15: Close the browser
+		driver.close();
+		
+		
+
+	}
+
+}
